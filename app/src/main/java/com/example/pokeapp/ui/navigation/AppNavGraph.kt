@@ -15,7 +15,6 @@ fun AppNavGraph() {
     val startDestination =
         if (FirebaseAuth.getInstance().currentUser != null) Routes.MAIN
         else Routes.LOGIN
-
     NavHost(
         navController = navController,
         startDestination = startDestination
@@ -29,7 +28,6 @@ fun AppNavGraph() {
                 }
             )
         }
-
         composable(Routes.MAIN) {
             MainScreen()
         }

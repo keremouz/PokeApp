@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.*
 import com.example.pokeapp.ui.navigation.Routes
+import com.example.pokeapp.ui.screens.pokemon.PokemonScreen
 
 @Composable
 fun MainScreen() {
@@ -30,7 +31,6 @@ fun MainScreen() {
                         selected = currentRoute == route,
                         onClick = {
                             navController.navigate(route) {
-                                // tab değiştirirken stack şişmesin
                                 popUpTo(navController.graph.startDestinationId) { saveState = true }
                                 launchSingleTop = true
                                 restoreState = true
