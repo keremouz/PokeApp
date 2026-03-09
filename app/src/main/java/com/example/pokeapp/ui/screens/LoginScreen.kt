@@ -5,19 +5,15 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.pokeapp.data.auth.FirebaseAuthRepository
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.pokeapp.ui.screens.auth.AuthViewModel
-import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun LoginScreen(onLoginSuccess: () -> Unit) {
-
-    val vm = remember {
-        AuthViewModel(
-            repo = FirebaseAuthRepository(FirebaseAuth.getInstance())
-        )
-    }
-
+fun LoginScreen(
+    onLoginSuccess: () -> Unit,
+    onGoRegister: () -> Unit = {}
+) {
+    val vm: AuthViewModel = hiltViewModel()
     val state by vm.state.collectAsState()
 
     Column(
@@ -26,7 +22,7 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             .padding(24.dp),
         verticalArrangement = Arrangement.Center
     ) {
-        Text("Login / Register")
+        Text("Login")
 
         Spacer(modifier = Modifier.height(12.dp))
 
@@ -34,7 +30,8 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             value = state.email,
             onValueChange = vm::onEmailChange,
             label = { Text("Email") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
         )
 
         Spacer(modifier = Modifier.height(8.dp))
@@ -43,13 +40,14 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             value = state.password,
             onValueChange = vm::onPasswordChange,
             label = { Text("Password") },
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            singleLine = true
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
-        if (state.error != null) {
-            Text("Hata: ${state.error}")
+        state.error?.let {
+            Text("Hata: $it", color = MaterialTheme.colorScheme.error)
             Spacer(modifier = Modifier.height(8.dp))
         }
 
@@ -60,9 +58,9 @@ fun LoginScreen(onLoginSuccess: () -> Unit) {
             ) { Text("Login") }
 
             OutlinedButton(
-                onClick = { vm.register(onLoginSuccess) },
+                onClick = onGoRegister,
                 enabled = !state.isLoading
-            ) { Text("Register") }
+            ) { Text("Create account") }
         }
     }
 }

@@ -6,11 +6,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.*
 import com.example.pokeapp.ui.navigation.Routes
+import com.example.pokeapp.ui.screens.favorites.FavoritesScreen
 import com.example.pokeapp.ui.screens.pokemon.PokemonScreen
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainScreen() {
-
+fun MainScreen(
+    onLogout: () -> Unit
+) {
     val navController = rememberNavController()
 
     val tabs = listOf(
@@ -21,6 +24,16 @@ fun MainScreen() {
     )
 
     Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("PokeApp") },
+                actions = {
+                    TextButton(onClick = onLogout) {
+                        Text("Çıkış")
+                    }
+                }
+            )
+        },
         bottomBar = {
             NavigationBar {
                 val currentRoute =
@@ -36,7 +49,7 @@ fun MainScreen() {
                                 restoreState = true
                             }
                         },
-                        icon = {},
+                        icon = {}, // sonra ikon ekleriz
                         label = { Text(label) }
                     )
                 }

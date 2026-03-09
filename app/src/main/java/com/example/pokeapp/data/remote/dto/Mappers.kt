@@ -8,12 +8,13 @@ private fun String.extractPokemonId(): Int {
         .last()
         .toInt()
 }
-fun PokemonResultDto.toDomain(): PokemonListItem{
+
+fun PokemonResultDto.toDomain(): PokemonListItem {
     val id = url.extractPokemonId()
+
     return PokemonListItem(
         id = id,
         name = name,
-        url = url,
-
+        url = url
     )
 }
