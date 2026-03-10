@@ -9,6 +9,7 @@ import com.example.pokeapp.ui.screens.LoginScreen
 import com.example.pokeapp.ui.screens.MainScreen
 import com.example.pokeapp.ui.screens.RegisterEmailScreen
 import com.example.pokeapp.ui.screens.auth.AuthViewModel
+import com.example.pokeapp.ui.screens.items.ItemsScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -53,6 +54,9 @@ fun AppNavGraph() {
                     }
                 }
             )
+        }
+        composable(Routes.ITEMS) {
+            ItemsScreen()
         }
     }
 }

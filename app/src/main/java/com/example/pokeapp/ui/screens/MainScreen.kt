@@ -6,7 +6,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.*
 import com.example.pokeapp.ui.navigation.Routes
+import com.example.pokeapp.ui.screens.evolution.EvolutionScreen
 import com.example.pokeapp.ui.screens.favorites.FavoritesScreen
+import com.example.pokeapp.ui.screens.items.ItemsScreen
 import com.example.pokeapp.ui.screens.pokemon.PokemonScreen
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -49,7 +51,7 @@ fun MainScreen(
                                 restoreState = true
                             }
                         },
-                        icon = {}, // sonra ikon ekleriz
+                        icon = {},
                         label = { Text(label) }
                     )
                 }
