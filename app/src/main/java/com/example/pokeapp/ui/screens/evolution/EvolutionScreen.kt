@@ -18,9 +18,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.pokeapp.R
+import com.example.pokeapp.ui.theme.UiConstants
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,7 +35,7 @@ fun EvolutionScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Evolution")
+                    Text(text = stringResource(R.string.evolution))
                 }
             )
         }
@@ -53,7 +55,7 @@ fun EvolutionScreen(
 
                 state.error != null -> {
                     Text(
-                        text = state.error ?: "Bir hata oluştu",
+                        text = state.error ?: stringResource(R.string.generic_error),
                         modifier = Modifier.align(Alignment.Center)
                     )
                 }
@@ -61,8 +63,8 @@ fun EvolutionScreen(
                 else -> {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(12.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                        contentPadding = PaddingValues(UiConstants.ScreenPadding),
+                        verticalArrangement = Arrangement.spacedBy(UiConstants.ItemSpacing)
                     ) {
                         items(state.evolutionChains) { chain ->
                             Card(
@@ -70,7 +72,7 @@ fun EvolutionScreen(
                             ) {
                                 Text(
                                     text = chain,
-                                    modifier = Modifier.padding(16.dp)
+                                    modifier = Modifier.padding(UiConstants.CardPadding)
                                 )
                             }
                         }

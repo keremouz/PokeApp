@@ -18,9 +18,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.example.pokeapp.R
+import com.example.pokeapp.ui.theme.UiConstants
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -33,7 +35,7 @@ fun ItemsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = "Items")
+                    Text(text = stringResource(R.string.items))
                 }
             )
         }
@@ -54,8 +56,8 @@ fun ItemsScreen(
                 else -> {
                     LazyColumn(
                         modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(12.dp),
-                        verticalArrangement = Arrangement.spacedBy(8.dp)
+                        contentPadding = PaddingValues(UiConstants.ScreenPadding),
+                        verticalArrangement = Arrangement.spacedBy(UiConstants.ItemSpacing)
                     ) {
                         items(state.items) { item ->
                             Card(
@@ -63,7 +65,7 @@ fun ItemsScreen(
                             ) {
                                 Text(
                                     text = item.name.replaceFirstChar { it.uppercase() },
-                                    modifier = Modifier.padding(16.dp)
+                                    modifier = Modifier.padding(UiConstants.CardPadding)
                                 )
                             }
                         }

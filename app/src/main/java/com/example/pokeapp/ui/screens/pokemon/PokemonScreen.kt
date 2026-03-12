@@ -1,19 +1,35 @@
 package com.example.pokeapp.ui.screens.pokemon
 
-
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.StarBorder
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import coil.compose.AsyncImage
+import com.example.pokeapp.R
 import com.example.pokeapp.ui.screens.favorites.FavoritesViewModel
+import com.example.pokeapp.ui.theme.UiConstants
+import androidx.compose.foundation.layout.height
 
 @Composable
 fun PokemonScreen(
@@ -36,13 +52,21 @@ fun PokemonScreen(
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(24.dp),
+                    .padding(UiConstants.ScreenOuterPadding),
                 verticalArrangement = Arrangement.Center
             ) {
-                Text("Hata: ${state.error}", color = MaterialTheme.colorScheme.error)
-                Spacer(Modifier.height(12.dp))
+                Text(
+                    text = stringResource(
+                        R.string.error_with_message,
+                        state.error ?: ""
+                    ),
+                    color = MaterialTheme.colorScheme.error
+                )
+
+                Spacer(Modifier.height(UiConstants.MediumSpacing))
+
                 Button(onClick = { vm.loadPokemon() }) {
-                    Text("Tekrar Dene")
+                    Text(text = stringResource(R.string.retry))
                 }
             }
         }
@@ -51,15 +75,15 @@ fun PokemonScreen(
             LazyColumn(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(10.dp)
+                    .padding(UiConstants.FavoriteListPadding),
+                verticalArrangement = Arrangement.spacedBy(UiConstants.FavoriteItemSpacing)
             ) {
                 item {
                     Text(
-                        text = "Pokemon count: ${state.items.size}",
+                        text = stringResource(R.string.pokemon_count, state.items.size),
                         style = MaterialTheme.typography.titleMedium
                     )
-                    Spacer(Modifier.height(8.dp))
+                    Spacer(Modifier.height(UiConstants.SmallSpacing))
                 }
 
                 items(state.items) { pokemon ->
@@ -69,7 +93,7 @@ fun PokemonScreen(
                         Row(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .padding(12.dp),
+                                .padding(UiConstants.FavoriteRowPadding),
                             horizontalArrangement = Arrangement.SpaceBetween,
                             verticalAlignment = Alignment.CenterVertically
                         ) {
@@ -80,10 +104,10 @@ fun PokemonScreen(
                                 AsyncImage(
                                     model = pokemon.imageUrl,
                                     contentDescription = pokemon.name,
-                                    modifier = Modifier.size(72.dp)
+                                    modifier = Modifier.size(UiConstants.PokemonImageSize)
                                 )
 
-                                Spacer(modifier = Modifier.width(12.dp))
+                                Spacer(modifier = Modifier.width(UiConstants.ItemRowSpacing))
 
                                 Column {
                                     Text(
@@ -91,7 +115,7 @@ fun PokemonScreen(
                                         style = MaterialTheme.typography.titleMedium
                                     )
                                     Text(
-                                        text = "id: ${pokemon.id}",
+                                        text = stringResource(R.string.pokemon_id, pokemon.id),
                                         style = MaterialTheme.typography.bodySmall
                                     )
                                 }
@@ -106,7 +130,7 @@ fun PokemonScreen(
                                     )
                                 }
                             ) {
-                                Text("⭐")
+                                Text(text = "⭐")
                             }
                         }
                     }

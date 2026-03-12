@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">PokeApp</string>
+
+    <string name="items">Items</string>
+    <string name="evolution">Evolution</string>
+    <string name="favorites">Favorites</string>
+    <string name="logout">Logout</string>
+    <string name="remove">Remove</string>
+    <string name="pokemon">Pokemon</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="error_prefix">Error: %1$s</string>
+    <string name="create_account">Create account</string>
+    <string name="create_account_title">Create Account</string>
+    <string name="back">Back</string>
+    <string name="lets_start">Lets get started!</string>
+    <string name="what_is_your_email">What is your email address?</string>
+    <string name="email_hint">Email</string>
+    <string name="use_valid_email">Use a valid email address.</string>
+    <string name="password_hint">Password</string>
+    <string name="hide">Hide</string>
+    <string name="show">Show</string>
+    <string name="continue_text">Continue</string>
+    <string name="error_with_message">Error: %1$s</string>
+    <string name="no_favorites">No favorite Pokémon yet</string>
+    <string name="pokemon_id">id: %1$d</string>
+    <string name="retry">Retry</string>
+    <string name="pokemon_count">Pokemon count: %1$d</string>
+    <string name="language">Language</string>
+    <string name="turkish">TR</string>
+    <string name="english">EN</string>
+
+
+    <string name="generic_error">An error occurred</string>
+    <string name="loading">Loading</string>
+</resources>

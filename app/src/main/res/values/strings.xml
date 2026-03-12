@@ -1,3 +1,34 @@
 <resources>
     <string name="app_name">PokeApp</string>
+    <string name="items">Items</string>
+    <string name="evolution">Evolution</string>
+    <string name="generic_error">Bir hata oluştu</string>
+    <string name="pokemon">Pokemon</string>
+    <string name="login">Giriş</string>
+    <string name="email">Email</string>
+    <string name="password">Şifre</string>
+    <string name="error_prefix">Hata: %1$s</string>
+    <string name="create_account">Hesap oluştur</string>
+    <string name="favorites">Favorites</string>
+    <string name="logout">Çıkış</string>
+    <string name="remove">Kaldır</string>
+    <string name="create_account_title">Hesap Oluştur</string>
+    <string name="back">Geri</string>
+    <string name="lets_start">Hadi başlayalım!</string>
+    <string name="what_is_your_email">E-posta adresin nedir?</string>
+    <string name="email_hint">E-posta</string>
+    <string name="use_valid_email">Geçerli bir e-posta adresi kullan.</string>
+    <string name="password_hint">Şifre</string>
+    <string name="hide">Gizle</string>
+    <string name="show">Göster</string>
+    <string name="continue_text">Devam Et</string>
+    <string name="error_with_message">Hata: %1$s</string>
+    <string name="no_favorites">Henüz favori Pokémon yok</string>
+    <string name="pokemon_id">id: %1$d</string>
+    <string name="retry">Tekrar Dene</string>
+    <string name="pokemon_count">Pokemon count: %1$d</string>
+    <string name="language">Dil</string>
+    <string name="turkish">TR</string>
+    <string name="english">EN</string>
+    <string name="loading">Yükleniyor</string>
 </resources>
