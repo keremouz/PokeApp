@@ -30,6 +30,10 @@
     <string name="language">Language</string>
     <string name="turkish">TR</string>
     <string name="english">EN</string>
+    <string name="welcome_back">Welcome back!</string>
+    <string name="fill_your_details">Fill your details</string>
+    <string name="favorite">Favorite</string>
+    <string name="pokemon_number">No.%1$03d</string>
 
 
     <string name="generic_error">An error occurred</string>

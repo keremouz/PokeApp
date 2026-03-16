@@ -1,9 +1,9 @@
 package com.example.pokeapp.ui.screens.favorites
 
-import com.example.pokeapp.domain.model.PokemonListItem
+import com.example.pokeapp.ui.model.PokemonCardUiModel
 
-data class FavoritesUiState (
-    val items: List<PokemonListItem> = emptyList(),
+data class FavoritesUiState(
     val isLoading: Boolean = true,
+    val items: List<PokemonCardUiModel> = emptyList(),
     val error: String? = null
 )

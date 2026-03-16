@@ -3,9 +3,9 @@ package com.example.pokeapp.data.remote
 import com.example.pokeapp.data.remote.dto.EvolutionChainResponseDto
 import com.example.pokeapp.data.remote.dto.ItemListResponseDto
 import com.example.pokeapp.data.remote.dto.PokemonListResponseDto
-
-import retrofit2.http.GET
 import retrofit2.http.Path
+import com.example.pokeapp.data.remote.dto.PokemonDetailDto
+import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface PokeApiService {
@@ -27,5 +27,10 @@ interface PokeApiService {
     suspend fun getEvolutionChain(
         @Path("id") id: Int
     ): EvolutionChainResponseDto
+
+    @GET("pokemon/{id}")
+    suspend fun getPokemonDetail(
+        @Path("id") id: Int
+    ): PokemonDetailDto
 
 }

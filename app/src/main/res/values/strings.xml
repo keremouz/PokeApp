@@ -26,9 +26,16 @@
     <string name="no_favorites">Henüz favori Pokémon yok</string>
     <string name="pokemon_id">id: %1$d</string>
     <string name="retry">Tekrar Dene</string>
-    <string name="pokemon_count">Pokemon count: %1$d</string>
+    <string name="pokemon_count">Pokemon sayısı: %1$d</string>
     <string name="language">Dil</string>
     <string name="turkish">TR</string>
     <string name="english">EN</string>
     <string name="loading">Yükleniyor</string>
+    <string name="welcome_back">Tekrar hoş geldin!</string>
+    <string name="fill_your_details">Bilgilerini doldur</string>
+    <string name="favorite">Favori</string>
+    <string name="pokemon_number">N°%1$03d</string>
+
+
+
 </resources>

@@ -3,7 +3,7 @@ package com.example.pokeapp.data.remote.dto
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class EvolutionChainResponseDto(
-    val id: Int,
-    val chain: EvolutionChainNodeDto
+data class PokemonTypeDto (
+    val name: String,
+    val url: String
 )

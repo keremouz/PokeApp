@@ -57,6 +57,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.room.runtime.android)
+    implementation("com.airbnb.android:lottie-compose:6.4.0")
+    implementation("androidx.appcompat:appcompat:1.7.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

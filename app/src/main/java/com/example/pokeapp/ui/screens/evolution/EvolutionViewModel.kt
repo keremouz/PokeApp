@@ -3,7 +3,7 @@ package com.example.pokeapp.ui.screens.evolution
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pokeapp.data.remote.NetworkModule
-import com.example.pokeapp.data.remote.dto.ChainDto
+import com.example.pokeapp.data.remote.dto.EvolutionChainNodeDto
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -54,10 +54,10 @@ class EvolutionViewModel @Inject constructor() : ViewModel() {
         }
     }
 
-    private fun extractEvolutionNames(chain: ChainDto): List<String> {
+    private fun extractEvolutionNames(chain: EvolutionChainNodeDto): List<String> {
         val result = mutableListOf<String>()
 
-        fun traverse(node: ChainDto) {
+        fun traverse(node: EvolutionChainNodeDto) {
             result.add(node.species.name)
             node.evolvesTo.forEach { child ->
                 traverse(child)
