@@ -35,7 +35,12 @@
     <string name="fill_your_details">Bilgilerini doldur</string>
     <string name="favorite">Favori</string>
     <string name="pokemon_number">N°%1$03d</string>
+    <string name="empty_favorites_title">Henüz favori Pokémon yok</string>
+    <string name="empty_favorites_description">Favori Pokémonlarını kalp ikonuna basarak ekleyebilirsin. Eklediklerin burada görünecek.</string>
+    <string name="empty_favorites_image_desc">Boş favoriler görseli</string>
 
-
-
+    <plurals name="evolution_stage_count">
+        <item quantity="one">%d Aşamalı Evrim</item>
+        <item quantity="other">%d Aşamalı Evrim</item>
+    </plurals>
 </resources>

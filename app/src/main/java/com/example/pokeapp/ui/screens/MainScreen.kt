@@ -3,7 +3,6 @@ package com.example.pokeapp.ui.screens
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -100,11 +99,7 @@ fun MainScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(UiConstants.BottomBarHeight)
-                    .background(UiConstants.BottomBarBackgroundColor)
-                    .border(
-                        width = UiConstants.BottomBarBorderWidth,
-                        color = UiConstants.BottomBarBorderColor
-                    ),
+                    .background(UiConstants.BottomBarBackgroundColor),
                 horizontalArrangement = Arrangement.SpaceEvenly,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -175,7 +170,7 @@ fun MainScreen(
                             } else {
                                 UiConstants.BottomBarUnselectedColor
                             },
-                            style = MaterialTheme.typography.labelSmall
+                            style = MaterialTheme.typography.labelMedium
                         )
                     }
                 }

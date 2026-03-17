@@ -23,7 +23,7 @@ class EvolutionViewModel @Inject constructor() : ViewModel() {
         getEvolutionChains()
     }
 
-    fun getEvolutionChains() {
+    private fun getEvolutionChains() {
         viewModelScope.launch {
             _state.value = _state.value.copy(
                 isLoading = true,
@@ -31,24 +31,39 @@ class EvolutionViewModel @Inject constructor() : ViewModel() {
             )
 
             try {
-                val chains = mutableListOf<String>()
+                val chains = mutableListOf<EvolutionChainUiModel>()
 
                 for (id in 1..10) {
                     val response = apiService.getEvolutionChain(id)
                     val names = extractEvolutionNames(response.chain)
-                    chains.add(names.joinToString(" -> ") { name ->
-                        name.replaceFirstChar { it.uppercase() }
-                    })
+
+                    if (names.isNotEmpty()) {
+                        val formattedNames = names.map { it.capitalizePokemonName() }
+
+                        chains.add(
+                            EvolutionChainUiModel(
+                                title = formattedNames.first(),
+                                stageCount = formattedNames.size,
+                                pokemons = formattedNames.map { name ->
+                                    EvolutionPokemonUiModel(
+                                        name = name,
+                                        imageUrl = getPokemonImageUrl(name.lowercase())
+                                    )
+                                }
+                            )
+                        )
+                    }
                 }
 
                 _state.value = _state.value.copy(
                     isLoading = false,
                     evolutionChains = chains
                 )
+
             } catch (e: Exception) {
                 _state.value = _state.value.copy(
                     isLoading = false,
-                    error = e.message ?: "Bir hata oluştu"
+                    error = e.message
                 )
             }
         }
@@ -65,6 +80,15 @@ class EvolutionViewModel @Inject constructor() : ViewModel() {
         }
 
         traverse(chain)
-        return result
+        return result.distinct()
+    }
+
+    private fun String.capitalizePokemonName(): String {
+        return replaceFirstChar { char ->
+            if (char.isLowerCase()) char.titlecase() else char.toString()
+        }
+    }
+    private fun getPokemonImageUrl(name: String): String {
+        return "https://img.pokemondb.net/sprites/home/normal/$name.png"
     }
 }

@@ -10,10 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -24,50 +21,45 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.pokeapp.R
 import com.example.pokeapp.ui.theme.UiConstants
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ItemsScreen(
     viewModel: ItemsViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(text = stringResource(R.string.items))
-                }
-            )
-        }
-    ) { innerPadding ->
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = UiConstants.ScreenPadding)
+    ) {
+        when {
+            state.isLoading -> {
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
 
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-        ) {
-            when {
-                state.isLoading -> {
-                    CircularProgressIndicator(
-                        modifier = Modifier.align(Alignment.Center)
-                    )
-                }
+            else -> {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize(),
+                    contentPadding = PaddingValues(vertical = UiConstants.ScreenPadding),
+                    verticalArrangement = Arrangement.spacedBy(UiConstants.ItemSpacing)
+                ) {
+                    item {
+                        Text(
+                            text = stringResource(R.string.items),
+                            modifier = Modifier.padding(bottom = UiConstants.SmallSpacing)
+                        )
+                    }
 
-                else -> {
-                    LazyColumn(
-                        modifier = Modifier.fillMaxSize(),
-                        contentPadding = PaddingValues(UiConstants.ScreenPadding),
-                        verticalArrangement = Arrangement.spacedBy(UiConstants.ItemSpacing)
-                    ) {
-                        items(state.items) { item ->
-                            Card(
-                                modifier = Modifier.fillMaxWidth()
-                            ) {
-                                Text(
-                                    text = item.name.replaceFirstChar { it.uppercase() },
-                                    modifier = Modifier.padding(UiConstants.CardPadding)
-                                )
-                            }
+                    items(state.items) { item ->
+                        Card(
+                            modifier = Modifier.fillMaxWidth()
+                        ) {
+                            Text(
+                                text = item.name.replaceFirstChar { it.uppercase() },
+                                modifier = Modifier.padding(UiConstants.CardPadding)
+                            )
                         }
                     }
                 }

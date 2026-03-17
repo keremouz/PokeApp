@@ -21,6 +21,12 @@ object UiConstants {
     val BottomBarSelectedTextColor = Color(0xFF2F5BEA)
     val BottomBarSelectedFavoriteColor = Color(0xFFFF5A7A)
     val BottomBarUnselectedColor = Color.Gray
+    val EvolutionCardColor1 = Color(0xFFE8F5E9)
+    val EvolutionCardColor2 = Color(0xFFFFF3E0)
+    val EvolutionCardColor3 = Color(0xFFE3F2FD)
+    val EvolutionCardColor4 = Color(0xFFF3E5F5)
+    val EvolutionCardColor5 = Color(0xFFFFEBEE)
+    val EvolutionCardColor6 = Color(0xFFF1F8E9)
 
     val PokemonCardCornerRadius = 15.dp
     val PokemonCardPadding = 14.dp
@@ -38,13 +44,17 @@ object UiConstants {
 
     val TypeChipHorizontalPadding = 10.dp
     val TypeChipVerticalPadding = 4.dp
-    val BottomBarHeight = 56.dp
-    val BottomBarBorderWidth = 1.dp
-    val BottomBarItemVerticalPadding = 2.dp
-    val BottomBarIconLabelSpacing = 2.dp
-    val BottomBarBorderColor = Color(0xFFEAEAEA)
 
+    val BottomBarHeight = 72.dp
+    val BottomBarItemVerticalPadding = 8.dp
+    val BottomBarIconLabelSpacing = 6.dp
+    val BottomBarIconSize = 26.dp
 
-    val BottomBarIconSize = 24.dp
+    val CardCornerRadius = 20.dp
+    val CardElevation = 4.dp
+    val EvolutionCardHeight = 110.dp
+    val EvolutionImageSize = 48.dp
+    val VerySmallSpacing = 4.dp
+    val EmptyFavoritesImageSize = 220.dp
 
 }

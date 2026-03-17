@@ -34,8 +34,16 @@
     <string name="fill_your_details">Fill your details</string>
     <string name="favorite">Favorite</string>
     <string name="pokemon_number">No.%1$03d</string>
+    <string name="empty_favorites_title">You have no favorite Pokémon yet</string>
+    <string name="empty_favorites_description">You can add your favorite Pokémon by tapping the heart icon. The ones you add will appear here.</string>
+    <string name="empty_favorites_image_desc">Empty favorites image</string>
 
 
     <string name="generic_error">An error occurred</string>
     <string name="loading">Loading</string>
+
+    <plurals name="evolution_stage_count">
+        <item quantity="one">%d Stage Evolution</item>
+        <item quantity="other">%d Stage Evolution</item>
+    </plurals>
 </resources>
