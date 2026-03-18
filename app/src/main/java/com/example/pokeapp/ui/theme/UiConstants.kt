@@ -56,5 +56,6 @@ object UiConstants {
     val EvolutionImageSize = 48.dp
     val VerySmallSpacing = 4.dp
     val EmptyFavoritesImageSize = 220.dp
+    val ItemImageSize = 56.dp
 
 }

@@ -5,6 +5,7 @@ import kotlinx.serialization.Serializable
 
 
 @Serializable
-data class PokemonListResponseDto(
-    @SerialName("results") val results: List<PokemonResultDto> = emptyList()
+data class ItemSpritesDto (
+    @SerialName("default")
+    val defaultImage: String? = null
 )

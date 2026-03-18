@@ -9,11 +9,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.example.pokeapp.data.remote.dto.ItemDetailDto
 
 @HiltViewModel
-class ItemsViewModel @Inject constructor(
-
-) : ViewModel() {
+class ItemsViewModel @Inject constructor() : ViewModel() {
 
     private val apiService = NetworkModule.api
 
@@ -24,7 +23,7 @@ class ItemsViewModel @Inject constructor(
         getItems()
     }
 
-    fun getItems(limit: Int = 40, offset: Int = 0) {
+    fun getItems(limit: Int = 30, offset: Int = 0) {
         viewModelScope.launch {
             _state.value = _state.value.copy(
                 isLoading = true,
@@ -35,9 +34,13 @@ class ItemsViewModel @Inject constructor(
                 val response = apiService.getItemList(limit, offset)
 
                 val itemList = response.results.map { itemDto ->
+                    val detail = apiService.getItemDetail(itemDto.name)
+
                     ItemUiModel(
-                        name = itemDto.name,
-                        url = itemDto.url
+                        name = detail.name.capitalizeWords(),
+                        imageUrl = detail.sprites.defaultImage,
+                        category = detail.category.name.capitalizeWords(),
+                        cost = detail.cost
                     )
                 }
 
@@ -51,6 +54,14 @@ class ItemsViewModel @Inject constructor(
                     isLoading = false,
                     error = e.message ?: "Bir hata oluştu"
                 )
+            }
+        }
+    }
+
+    private fun String.capitalizeWords(): String {
+        return split("-").joinToString(" ") { word ->
+            word.replaceFirstChar { char ->
+                if (char.isLowerCase()) char.titlecase() else char.toString()
             }
         }
     }

@@ -10,8 +10,3 @@ data class ItemListResponseDto(
     val previous: String?,
     val results: List<ItemDto>
 )
-@Serializable
-data class ItemDto(
-    val name: String,
-    val url: String
-)

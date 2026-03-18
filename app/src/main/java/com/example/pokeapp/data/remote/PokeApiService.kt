@@ -1,6 +1,7 @@
 package com.example.pokeapp.data.remote
 
 import com.example.pokeapp.data.remote.dto.EvolutionChainResponseDto
+import com.example.pokeapp.data.remote.dto.ItemDetailDto
 import com.example.pokeapp.data.remote.dto.ItemListResponseDto
 import com.example.pokeapp.data.remote.dto.PokemonListResponseDto
 import retrofit2.http.Path
@@ -22,6 +23,11 @@ interface PokeApiService {
         @Query("limit") limit: Int,
         @Query("offset") offset: Int
     ): ItemListResponseDto
+
+    @GET("item/{name}")
+    suspend fun getItemDetail(
+        @Path("name") name: String
+    ): ItemDetailDto
 
     @GET("evolution-chain/{id}")
     suspend fun getEvolutionChain(

@@ -4,11 +4,9 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Card
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -39,6 +37,13 @@ fun ItemsScreen(
                 )
             }
 
+            state.error != null -> {
+                Text(
+                    text = state.error ?: stringResource(R.string.generic_error),
+                    modifier = Modifier.align(Alignment.Center)
+                )
+            }
+
             else -> {
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
@@ -53,14 +58,7 @@ fun ItemsScreen(
                     }
 
                     items(state.items) { item ->
-                        Card(
-                            modifier = Modifier.fillMaxWidth()
-                        ) {
-                            Text(
-                                text = item.name.replaceFirstChar { it.uppercase() },
-                                modifier = Modifier.padding(UiConstants.CardPadding)
-                            )
-                        }
+                        ItemCard(item = item)
                     }
                 }
             }
